@@ -1,0 +1,520 @@
+" vim:ts=2 sts=2 sw=2 expandtab foldmethod=marker
+"   ^^^^^^^VIMMODELINE^^^^^^^
+"        ________ ++     ________
+"       /VVVVVVVV\++++  /VVVVVVVV\
+"       \VVVVVVVV/++++++\VVVVVVVV/
+""        |VVVVVV|++++++++/VVVVV/'
+""        |VVVVVV|++++++/VVVVV/'
+""       +|VVVVVV|++++/VVVVV/'+
+""     +++|VVVVVV|++/VVVVV/'+++++
+""   +++++|VVVVVV|/VVVVV/'+++++++++
+""     +++|VVVVVVVVVVV/'+++++++++
+""       +|VVVVVVVVV/'+++++++++
+""        |VVVVVVV/'+++++++++
+""        |VVVVV/'+++++++++
+""        |VVV/'+++++++++
+""        'V/'   ++++++
+""                 ++"
+" File: .vimrc
+" Author: Me
+" Description:
+" Last Modified: March 25, 2017
+" Windows Plugin Path:
+" C:\00-MyTinks\PortaleAppsPlatformBackup\PortableApps\gVimPortable\App\vim\vim80\pack\01plugins\start
+"
+"Basic Settings"{{{
+"--------------
+  set nowrap
+  set number
+  set noswapfile
+  set modeline
+  syntax enable
+  set tabstop=2
+  set expandtab
+  set shiftwidth=2
+  set t_Co=256
+  set autoindent
+  set expandtab
+  let mapleader = ","
+  filetype plugin indent on
+  "wildmenu
+  set wildmenu wildmode=longest:full,full
+  "
+  "set paste
+  "set modelines
+  ""}}}
+
+"Visual Settings {{{
+  colorscheme desert
+  " let g:mycolorschema_default = "desert"
+  " let g:mycolorschema_python = "desert"
+  " let g:mycolorschema_help= "doorhinge"
+  " let g:mycolorschema_NxFmlFile= "murphy"
+  "Set gvim windowsize
+    if has("gui_running")
+      set guioptions -=T          "turn off Toolbar
+    endif
+  "}}}
+
+"Basics KeyMaps"{{{
+  "tabs
+  nmap <C-t> :tabnew<CR>
+  nmap <S-F12> :source $MYVIMRC<CR>:echomsg "Reload .vimrc"<CR><CR>
+  nmap <C-F12> :e $MYVIMRC<CR>:echomsg "Edit .vimrc"<CR>
+  nmap <C-Tab> gt
+  nmap <S-C-Tab> gT
+  nmap <A-1> 1gt
+  nmap <A-2> 2gt
+  nmap <A-3> 3gt
+  nmap <A-4> 4gt
+  nmap <A-5> 5gt
+  nmap <A-6> 6gt
+  "saving and quiting
+  nmap <F2> :w<CR>
+  nmap <C-F2> w !sudo tee %<CR>
+  nmap Q :q!
+  nmap W :wq
+  "move lines
+  nnoremap <A-j> :m .+1<CR>==
+  nnoremap <A-k> :m .-2<CR>==
+  " inoremap <A-j> <Esc>:m .+1<CR>==gi
+  " inoremap <A-k> <Esc>:m .-2<CR>==gi
+  vnoremap <A-j> :m '>+1<CR>gv=gv
+  vnoremap <A-k> :m '<-2<CR>gv=gv
+  "Find/Replace Dialog
+  nmap <C-h> :promptrepl<CR>
+
+  "Keyboard remap for german keyboard
+  nmap ö ;
+  nmap - /
+
+  "Easier jump to end and beginnig of line
+  noremap H 0
+  noremap L g_
+
+  "Easier V-Mode indent
+  vmap <TAB> >gv
+  vmap <S-TAB> <gv
+  vmap <C-S-TAB> <gv<gv<gv<gv<gv<gv<gv
+  "Shortcut i in Visual to fix indent
+  vmap i =
+  "map space to page up and down
+  "nmap <S-space> <C-b>
+  "nmap <space> <C-f>
+
+  set backspace=2 " make backspace work like most other apps
+
+  "Set The Language Of The Vim"
+  set langmenu=en_US
+  let $LANG = 'en_US'
+  source $VIMRUNTIME/delmenu.vim
+  source $VIMRUNTIME/menu.vim
+
+  "}}}
+
+  "Search Options"{{{
+  set hlsearch
+  set ignorecase
+  nmap <S-C-F12> :nohlsearch<CR>
+  "Get Match-Count of last search
+  " :%s///gn<CR>
+  map <Leader>* *<C-O>:%s///gn<CR>
+  "highlight spaces
+  " set list listchars=tab:Â»\ ,trail:Â·"
+  set list listchars=tab:>-,trail:·,precedes:<,extends:> "}}}
+
+  "map to use system Clipboard"{{{
+  " Visual selection automatically copied to the clipboard
+  set go+=a
+  nmap <Leader>p O<ESC>"+gP
+  vmap <Leader>p "+y
+  " imap <C-v> "+gP
+  " "}}}
+
+"NerdTree config"{{{
+  let NERDTreeShowBookmarks=1
+  let NERDTreeQuitOnOpen=1
+  nmap <C-F1> :NERDTreeToggle<CR>
+  "}}}
+
+"MRU config"{{{
+  " let MRU_File = "/home/vanf/.vim/MRUfiles"
+  let MRU_Max_Entries = 500
+  let MRU_Window_Height = 15
+  nmap <S-F1> :MRU<CR>
+  "}}}
+
+"NERDTree Options"{{{
+  " nmap <F1> :NERDTreeToggle<CR>
+  " nmap <C-F1> :NERDTreeToggle /home/vanf/ownCloud/Documents/00-todos/<CR>
+  " let NERDTreeQuitOnOpen=0
+  " let NERDTreeBookmarksFile="/home/vanf/.vim/NERDTreeBookmarks"
+  " let NERDTreeWinPos = "right"
+  " let NERDTreeWinSize=22
+  " "}}}
+
+"Yankring Config"{{{
+  nmap <M-p> :YRShow<CR>
+  let g:yankring_window_height=15
+  let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
+  let g:yankring_default_menu_mode = 0
+  " let g:yankring_history_dir ="/home/vanf/.vim/"
+  " let g:yankring_history_file = 'YankRing'
+  " "}}}
+
+  "UndoTree"{{{
+  " Put plugins and dictionaries in this dir (also on Windows)
+  nnoremap <F5> :UndotreeToggle<cr>
+  let g:undotree_SplitWidth=15
+  let g:undotree_SetFocusWhenToggle=1
+  let g:undotree_DiffAutoOpen=0
+  let vimDir = '$HOME/.vim'
+  let &runtimepath.=','.vimDir
+  "}}}
+
+  "Special UndoTree File Location{{{
+  "Keep undo history across sessions by storing it in a file
+    if has('persistent_undo')
+      let myUndoDir = expand(vimDir . '/undodir')
+      " Create dirs
+      call system('mkdir ' . vimDir)
+      call system('mkdir ' . myUndoDir)
+      let &undodir = myUndoDir
+      set undofile
+    endif
+    "}}}
+
+  "EasyMotion Mapping"{{{
+  let g:EasyMotion_smartcase = 1
+  let g:EasyMotion_leader_key = '#'
+  nmap <C-j> <Plug>(easymotion-bd-jk)
+  nmap <C-k> <Plug>(easymotion-bd-jk)
+  nmap <C-l> <Plug>(easymotion-bd-w)
+  "}}}
+
+  "SnipMate"{{{
+  nmap <F10> :SnipMateOpenSnippetFiles<CR>
+  let g:snips_author = "Daniel Novta"
+  "insert mode space to show snipmenu
+  imap <S-Space> <Plug>snipMateShow
+  "}}}
+
+  "Sneak Mapping"{{{
+  let g:sneak#use_ic_scs = 1
+  nmap f <Plug>Sneak_f
+  nmap F <Plug>Sneak_F
+  xmap f <Plug>Sneak_f
+  xmap F <Plug>Sneak_F
+  omap f <Plug>Sneak_f
+  omap F <Plug>Sneak_F
+  nmap t <Plug>Sneak_t
+  nmap T <Plug>Sneak_T
+  xmap t <Plug>Sneak_t
+  xmap T <Plug>Sneak_T
+  omap t <Plug>Sneak_t
+  omap T <Plug>Sneak_T
+  "}}}
+
+  "My Functions Command binding"{{{
+  command! MyFindLinks /\(http:\|https:\)\/\/[^\"]*
+  command! MyFindEmptyLines promptfind \(\n\n\)\n\+
+
+  command! MyColorSchemeSwitch :call MyColorSchemeSwitch()
+  "copy the whole Text of Buffer to System Clipboard
+  command! MyCopyAll execute "normal gg<S-v>GG\"+y<C-o><C-o>zz"
+  "delete all lines with match
+  command! MyFindDeleteMatch execute "g/".getreg('/')."/d"
+  "delete all lines without match
+  command! MyFindKeepMatch execute "g!/".getreg('/')."/d"
+  command! MyGetAllScripts :call MyGetAllScripts()
+  command! MyInsertShebank execute "normal i#!/bin/sh<CR>"
+  command! MyStripTrailingWhitespace :call MyStripTrailingWhitespace()
+  command! MySwitchCursorMiddle :call SwitchCursorMiddle()
+  "}}}
+
+  "My Functions"{{{
+  "example phow to insert text from Function
+
+  function! MyFunction(stuff)
+    execute "normal i%%%%%%%%%%"a:stuff"%%%%%%%%%"
+  endfunction
+
+  "switch Cursor Modes
+  nmap <C-F11> :MySwitchCursorMiddle<CR>
+  let g:switchsursormiddle=0
+  function! SwitchCursorMiddle()
+    if g:switchsursormiddle==0
+      let g:switchsursormiddle=1
+      :set relativenumber
+      :set so=999
+      echomsg "Cursor stays in Middle ON"
+    else
+      set relativenumber!
+      set so=0
+      echomsg "Cursor stays in Middle OFF"
+      let g:switchsursormiddle=0
+    endif
+  endfunction
+
+  function! MyGetAllScripts()
+    execute "redir @u"
+    execute "silent! set rtp"
+    execute "redir END"
+    execute "let output = copy(@u)"
+    execute "tabnew"
+    execute "put! =output"
+    execute "s/,/
+/g"
+    execute "sort"
+  endfunction
+
+  function! MyStripTrailingWhitespace()
+    if !&binary && &filetype != 'diff'
+      normal mz
+      normal Hmy
+      %s/\s\+$//e
+      normal 'yz<CR>
+      normal `z
+    endif
+  endfunction
+  "}}}
+
+  "Open Todo Files todo thing: **DEPRECATED**"{{{
+  nmap <C-S-F1> :TodoOpen<CR>
+  command! TodoOpen :call TodoOpen()
+  function! TodoOpen()
+    let g:todopath='/home/vanf/ownCloud/Documents/00-todos/'
+    if g:todopath== ''
+      echo "no todo path declared in vimrc"
+    else
+      exe "lcd " . g:todopath
+      :tabnew
+      e 01-work_ToDo.txt
+      :NERDTree 00-todos
+
+      " e computer_ToDo.txt
+      " sf home_ToDo.txt
+      " sf work_ToDo.txt
+      " call feedkeys("\<C-W>\<S-H>")
+      call feedkeys("\<C-W>\<C-W>")
+    end
+
+  endfunction
+  "}}}
+
+  "show trailing whitespace"{{{
+  :au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  :au InsertLeave * match ExtraWhitespace /\s\+$/
+  :highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+  "}}}
+
+"example Macrosave"{{{
+let @q = 'ihallo test
+'
+"}}}
+
+  "Bookmarks Plugin Setup"{{{
+  highlight SignColumn ctermbg=black guibg=grey25
+  set scl=yes
+  nmap <C-F3> mm
+  nmap <S-F3> mm
+  nmap <F3> mn
+
+  let g:bookmark_sign = '>'
+  let g:bookmark_annotation_sign = '#'
+  "new symbol for Windows needed
+  "}}}
+
+  "Airline"{{{
+    "AirlineTheme solarized
+    " let g:bufferline_echo=0
+    " set shortmess=a
+    " set cmdheight=1
+    " let g:airline_theme='solarized'
+    " set laststatus=2
+    "}}}
+
+  "OS special things"{{{
+  if has("mac")
+    " open a file in TextMate from vi: "
+  elseif has("unix")
+      "CapsLocks to ESC
+      set lines=30 columns=100
+      set guifont=Hack\ 15
+      " au VimEnter * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+      " au VimLeave * silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+  elseif has("win32")
+    " do stuff under windows "
+      set lines=40 columns=140
+      set guifont=Inconsolata:h14 "http://www.levien.com/type/myfonts/inconsolata.html
+  endif
+  "}}}
+
+"Filetype Stuff"{{{
+"--------------
+
+  "return to Default Colorschema
+  " autocmd! BufLeave *.py exe "colo " . g:mycolorschema_default
+  " autocmd! BufLeave *.html exe "colo " . g:mycolorschema_default
+  " autocmd! BufLeave *.fml exe "colo " . g:mycolorschema_default
+
+  "Call Special Python Settings
+  autocmd! BufNewFile,BufRead,BufEnter *.py exe "call SetPythonOptions()"
+  autocmd! BufNewFile,BufRead,BufEnter *.html exe "call SetHtmlOptions()"
+  autocmd! BufNewFile,BufRead,BufEnter *.php exe "call SetHtmlOptions()"
+
+  autocmd! BufNewFile,BufRead,BufEnter *.fml exe "call SetNxFmlFileOptions()"
+
+  "Auto Source vimrc
+  autocmd! bufwritepost .vimrc source %
+  autocmd! bufwritepost _vimrc source %
+
+  "special help bindings
+  autocmd! FileType help call SetHelpfileOptions()
+  autocmd! FileType NxFmlFile call SetNxFmlFileOptions()
+  "}}}
+
+  "Special Helpfile Settings Function"{{{
+   function! SetNxFmlFileOptions()
+     " exe "colo " . g:mycolorschema_NxFmlFile
+
+
+   endfunction
+
+   function! SetHelpfileOptions()
+    " execute "colo " . g:mycolorschema_help
+    "Enter to follow link
+    nnoremap <buffer> <CR> <C-]>
+    "backspace to go back
+    nnoremap <buffer> <BS> <C-T>
+    "oO to find next KeyWord
+    nnoremap <buffer> o /'\l\{2,\}'<CR>
+    nnoremap <buffer> O ?'\l\{2,\}'<CR>
+  endfunction
+  "}}}
+
+  "Special HTML Settings Function"{{{
+  function! SetHtmlOptions()
+    setlocal tabstop=2
+    setlocal softtabstop=2
+    setlocal shiftwidth=2
+    setlocal textwidth=80
+    setlocal smarttab
+    setlocal expandtab
+    set encoding=utf-8
+    set ai
+    nnoremap <F9> :w <bar> silent !firefox file://%:p<CR>
+    nmap <Leader>t f<lV%
+    " nmap <Leader>p O<ESC>"+gP `[v`]=
+  endfunction
+  "}}}
+
+  "Special Python Settings Function"{{{
+  function! SetPythonOptions()
+    " execute "colo " . g:mycolorschema_python
+    setlocal tabstop=4
+    setlocal softtabstop=4
+    setlocal shiftwidth=4
+    setlocal textwidth=80
+    setlocal smarttab
+    setlocal expandtab
+    " set background=light
+    " nnoremap <buffer> <F9> :exec '!python' shellescape(@%, 1)<cr>
+    nnoremap <F9> :w !python %<CR>
+  endfunction
+  "}}}
+
+  "Fullscreen Toogle"{{{
+  nnoremap <F11> :call ToggleFullScreen()<CR>
+  " inoremap <M-f> <C-\><C-O>:call ToggleFullScreen()<CR>
+
+  function! ToggleFullScreen()
+     call system("wmctrl -i -r ".v:windowid." -b toggle,fullscreen")
+      " :set guioptions -=m
+      if &go=~#'m'
+        set go-=m
+      else
+        set lines=30 columns=100
+        set go+=m
+      endif
+     redraw
+  endfunction
+  "}}}
+
+  "Run through all installed Colorschemas run with call DisplayColorSchemes()"{{{
+  function! DisplayColorSchemes()
+     let currDir = getcwd()
+     exec "cd $VIMRUNTIME/colors"
+     for myCol in split(glob("*"), '\n')
+        if myCol =~ '\.vim'
+           let mycol = substitute(myCol, '\.vim', '', '')
+           exec "colorscheme " . mycol
+           exec "redraw!"
+           echo "colorscheme = ". myCol
+           sleep 2
+        endif
+     endfor
+     exec "cd " . currDir
+  endfunction"}}}
+
+  "Toggle colorscheme Solaris Desert"{{{
+  nnoremap <S-F11> :call MyColorSchemeSwitch()<CR>
+  let g:mycolorschema_switch=0
+  function! MyColorSchemeSwitch()
+    if g:mycolorschema_switch==0
+      let g:mycolorschema_switch=1
+      execute "set background=dark|colo desert"
+    elseif g:mycolorschema_switch==1
+      execute "set background=light|colo solarized"
+      let g:mycolorschema_switch=2
+    elseif g:mycolorschema_switch==2
+      execute "set background=dark|colo delek"
+      let g:mycolorschema_switch=0
+    endif
+  endfunction
+  "}}}
+
+  "Toggle Fold Function and Mapping"{{{
+  nnoremap <Space> :call ToggleFoldAll()<CR>
+  nmap <C-F8> :call ToggleFoldAll()<CR>
+  nmap <F8> :normal! za<CR>
+  vmap <F8> zF
+  let g:folded = 1
+    function! ToggleFoldAll()
+      if( g:folded == 0 )
+          exec "normal! zM"
+          let g:folded = 1
+      else
+          exec "normal! zR"
+          let g:folded = 0
+      endif
+    endfunction
+    "}}}
+
+"Abbref {{{
+  iabbrev log console.log();<Esc>F(
+  iabbrev h1 <h1></h1><Left><Left><Left><Left><Left><Esc>
+"}}}
+
+" Todo and LeftOvers"{{{
+"-----------------------------------------------------------------------"
+"--------------                                             ------------"
+"--------------                    T O D O                  ------------"
+"--------------                                             ------------"
+"-----------------------------------------------------------------------"
+"
+"
+"          -> Python Debuging
+"          -> Markup
+"          -> Special Dictionary
+"          -> Thesaurus
+"          -> FTP Handling
+"          -> Syncing across iNet and Nix/Wdos
+"          -> Folding
+"          ----------------------------------
+"          XX Snipping
+"          XX Fullscreen on Shortcut
+""
+""
+ "-----------------------------------------------------------------------""}}}
+
