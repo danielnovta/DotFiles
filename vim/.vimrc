@@ -2,7 +2,8 @@ colo desert256
 " colo elflord
 set nowrap
 set number
-set ruler
+"set ruler
+set nocompatible
 set wildmenu
 set showcmd
 set showmatch
@@ -55,7 +56,6 @@ nmap <C-t> :tabnew<CR>
 nmap <C-TAB> gt
 nmap <C-S-TAB> gT
 
-nmap <C-F2>:source $MYVIMRC 
 ""nmap <F3>:noh
 nmap <F4> :q!
 
@@ -85,22 +85,50 @@ inoremap " ""<Left>
 
 " Function keys
 nmap <F1> :NERDTreeToggle<CR> " open/close NerdTreeWindow
-nmap <F2> :w                  " open TabNew
+nmap <F2> :w<cr>              " writeFile
 nmap <F3> :noh<CR>            " hide SearchHighlighting
+nmap <F4> :MRUToggle<CR>      " open/close RecentFiles
 
 " Status bar
-set laststatus=2
+set laststatus=1
 
+
+" Status Line Custom
+    ""\ '^V' : 'V·Block',
+let g:currentmode={
+    \ 'n'  : 'Normal',
+    \ 'no' : 'Normal·Operator Pending',
+    \ 'v'  : 'Visual',
+    \ 'V'  : 'V·Line',
+    \ "\<C-V>" :'V·Block',
+    \ 's'  : 'Select',
+    \ 'S'  : 'S·Line',
+    \ '^S' : 'S·Block',
+    \ 'i'  : 'Insert',
+    \ 'R'  : 'Replace',
+    \ 'Rv' : 'V·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal'
+    \}
+
+set laststatus=2
+set noshowmode
 set statusline=
 set statusline+=%0*\ %n\                                 " Buffer number
 set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
-set statusline+=%3*â”‚                                     " Separator
+set statusline+=%3*│                                     " Separator
 set statusline+=%2*\ %Y\                                 " FileType
-set statusline+=%3*â”‚                                     " Separator
+set statusline+=%3*│                                     " Separator
 set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}     " Encoding
 set statusline+=\ (%{&ff})                               " FileFormat (dos/unix..)
 set statusline+=%=                                       " Right Side
 set statusline+=%2*\ col:\ %02v\                         " Colomn number
-set statusline+=%3*â”‚                                     " Separator
+set statusline+=%3*│                                     " Separator
 set statusline+=%1*\ ln:\ %02l/%L\ (%3p%%)\              " Line number / total lines, percentage of document
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}\  " The current mode
