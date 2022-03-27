@@ -1,8 +1,19 @@
+" if vim 7.x no package feature feature
+" need to add them oneByone
+if v:version < 800
+    set runtimepath+=~/.vim/pack/plugins/start/mru
+    set runtimepath+=~/.vim/pack/plugins/start/nerdtree
+    set runtimepath+=~/.vim/pack/plugins/start/vim-easymotion
+    set runtimepath+=~/.vim/pack/plugins/start/vim-surround
+    set runtimepath+=~/.vim/pack/colors/start/vim-desert256
+endif
+
+"colo elflord 
 colo desert256
-" colo elflord
 set nowrap
 set number
-set ruler
+"set ruler
+set nocompatible
 set wildmenu
 set showcmd
 set showmatch
@@ -55,7 +66,6 @@ nmap <C-t> :tabnew<CR>
 nmap <C-TAB> gt
 nmap <C-S-TAB> gT
 
-nmap <C-F2>:source $MYVIMRC 
 ""nmap <F3>:noh
 nmap <F4> :q!
 
@@ -85,23 +95,55 @@ inoremap " ""<Left>
 
 " Function keys
 nmap <F1> :NERDTreeToggle<CR> " open/close NerdTreeWindow
-nmap <F2> :w                  " open TabNew
+nmap <F2> :w<cr>              " writeFile
 nmap <F3> :noh<CR>            " hide SearchHighlighting
+nmap <F4> :MRUToggle<CR>      " open/close RecentFiles
 
 " Status bar
+set laststatus=1
+
+
+" Status Line Custom
+    ""\ '^V' : 'VÂ·Block',
+let g:currentmode={
+    \ 'n'  : 'Normal',
+    \ 'no' : 'NormalÂ·Operator Pending',
+    \ 'v'  : 'Visual',
+    \ 'V'  : 'VÂ·Line',
+    \ "\<C-V>" :'VÂ·Block',
+    \ 's'  : 'Select',
+    \ 'S'  : 'SÂ·Line',
+    \ '^S' : 'SÂ·Block',
+    \ 'i'  : 'Insert',
+    \ 'R'  : 'Replace',
+    \ 'Rv' : 'VÂ·Replace',
+    \ 'c'  : 'Command',
+    \ 'cv' : 'Vim Ex',
+    \ 'ce' : 'Ex',
+    \ 'r'  : 'Prompt',
+    \ 'rm' : 'More',
+    \ 'r?' : 'Confirm',
+    \ '!'  : 'Shell',
+    \ 't'  : 'Terminal'
+    \}
+
 set laststatus=2
-
+set noshowmode
 set statusline=
-set statusline+=%#PmenuSel#
+set statusline+=%0*\ %n\                                 " Buffer number
+set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
+set statusline+=%3*â”‚                                     " Separator
+set statusline+=%2*\ %Y\                                 " FileType
+set statusline+=%3*â”‚                                     " Separator
+set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}     " Encoding
+set statusline+=\ (%{&ff})                               " FileFormat (dos/unix..)
+set statusline+=%=                                       " Right Side
+set statusline+=%2*\ col:\ %02v\                         " Colomn number
+set statusline+=%3*â”‚                                     " Separator
+set statusline+=%1*\ ln:\ %02l/%L\ (%3p%%)\              " Line number / total lines, percentage of document
+set statusline+=%0*\ %{toupper(g:currentmode[mode()])}\  " The current mode
 
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m\
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
-set statusline+=\
+hi User1 ctermfg=007 ctermbg=239 guibg=#4e4e4e guifg=#adadad
+hi User2 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad
+hi User3 ctermfg=236 ctermbg=236 guibg=#303030 guifg=#303030
+hi User4 ctermfg=239 ctermbg=239 guibg=#4e4e4e guifg=#4e4e4e
