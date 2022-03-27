@@ -56,7 +56,6 @@ nmap <C-t> :tabnew<CR>
 nmap <C-TAB> gt
 nmap <C-S-TAB> gT
 
-nmap <C-F2>:source $MYVIMRC 
 ""nmap <F3>:noh
 nmap <F4> :q!
 
@@ -86,8 +85,9 @@ inoremap " ""<Left>
 
 " Function keys
 nmap <F1> :NERDTreeToggle<CR> " open/close NerdTreeWindow
-nmap <F2> :w                  " open TabNew
+nmap <F2> :w<cr>              " writeFile
 nmap <F3> :noh<CR>            " hide SearchHighlighting
+nmap <F4> :MRUToggle<CR>      " open/close RecentFiles
 
 " Status bar
 set laststatus=1
