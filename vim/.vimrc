@@ -92,16 +92,15 @@ nmap <F3> :noh<CR>            " hide SearchHighlighting
 set laststatus=2
 
 set statusline=
-set statusline+=%#PmenuSel#
-
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m\
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
-set statusline+=\
+set statusline+=%0*\ %n\                                 " Buffer number
+set statusline+=%1*\ %<%F%m%r%h%w\                       " File path, modified, readonly, helpfile, preview
+set statusline+=%3*â”‚                                     " Separator
+set statusline+=%2*\ %Y\                                 " FileType
+set statusline+=%3*â”‚                                     " Separator
+set statusline+=%2*\ %{''.(&fenc!=''?&fenc:&enc).''}     " Encoding
+set statusline+=\ (%{&ff})                               " FileFormat (dos/unix..)
+set statusline+=%=                                       " Right Side
+set statusline+=%2*\ col:\ %02v\                         " Colomn number
+set statusline+=%3*â”‚                                     " Separator
+set statusline+=%1*\ ln:\ %02l/%L\ (%3p%%)\              " Line number / total lines, percentage of document
+set statusline+=%0*\ %{toupper(g:currentmode[mode()])}\  " The current mode
