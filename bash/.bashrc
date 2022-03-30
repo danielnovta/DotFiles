@@ -63,3 +63,5 @@ TERM=xterm-256color
 # if [ -z "$TMUX" ]; then
 #     tmux attach -t default || tmux new -s default
 # fi
+
+tmux new -A -s tmux0

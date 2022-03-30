@@ -1,5 +1,19 @@
+" if vim 7.x no package feature feature
+" need to add them oneByone
+if v:version < 800
+    set runtimepath+=~/.vim/pack/plugins/start/mru
+    set runtimepath+=~/.vim/pack/plugins/start/nerdtree
+    set runtimepath+=~/.vim/pack/plugins/start/vim-easymotion
+    set runtimepath+=~/.vim/pack/plugins/start/vim-surround
+    set runtimepath+=~/.vim/pack/colors/start/vim-desert256
+    set runtimepath+=~/.vim/pack/colors/start/vim-desert256
+    set runtimepath+=~/.vim/pack/plugins/start/vim-commentary
+endif
+" Visual Block HackMeck for uberspace:
+map <S-q> :Vb<CR>
+
+"colo elflord 
 colo desert256
-" colo elflord
 set nowrap
 set number
 "set ruler
