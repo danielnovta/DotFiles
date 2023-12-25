@@ -12,10 +12,11 @@ endif
 " Visual Block HackMeck for uberspace:
 map <S-q> :Vb<CR>
 
-"colo elflord 
+"colo elflord
 colo desert256
 set nowrap
 set number
+
 "set ruler
 set nocompatible
 set wildmenu
@@ -98,10 +99,12 @@ inoremap ' ''<Left>
 inoremap " ""<Left>
 
 " Function keys
-nmap <F1> :NERDTreeToggle<CR> " open/close NerdTreeWindow
+"nmap <F1> :NERDTreeToggle<CR> " open/close NerdTreeWindow
+nmap <F1> :Lexplore!<CR> " open/close NerdTreeWindow
 nmap <F2> :w<cr>              " writeFile
 nmap <F3> :noh<CR>            " hide SearchHighlighting
-nmap <F4> :MRUToggle<CR>      " open/close RecentFiles
+"nmap <F4> :MRUToggle<CR>      " open/close RecentFiles
+nmap <C-o> :Lexplore!<CR> " open/close NerdTreeWindow
 
 " Status bar
 set laststatus=1

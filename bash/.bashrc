@@ -44,6 +44,7 @@ alias dpi='dietpi-launcher'
 # Typo Prevention
 alias cim='vim'
 
+alias color='for i in {0..255}; do  printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i + 1 ) % 8 )); then echo ; fi ; done'
 alias matrix='tmux set -g status off; cmatrix -B -u 7 -C cyan;echo "";echo "Run tmux set -g status on"'
 
 #set the default text editor
@@ -64,4 +65,4 @@ TERM=xterm-256color
 #     tmux attach -t default || tmux new -s default
 # fi
 
-tmux new -A -s tmux0
+#tmux new -A -s tmux0
