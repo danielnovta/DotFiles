@@ -66,3 +66,8 @@ TERM=xterm-256color
 # fi
 
 #tmux new -A -s tmux0
+export LANGUAGE=en_GB.UTF-8
+export LC_ALL=en_GB.UTF-8
+export LC_CTYPE=UTF-8
+export LC_TERMINAL=iTerm2
+export LANG=en_GB.UTF-8

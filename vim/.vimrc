@@ -81,6 +81,7 @@ nmap <F4> :q!
 :command! SourceMyVimrc :execute "source $MYVIMRC<BAR>echom 'hep'"
 :command! EditMyVimrc :execute "edit $MYVIMRC"
 :command! HelpTagsRefresh :execute "helptags ALL"
+:command! SaveAsSudo :execute ":w !sudo tee %"
 
 "sourround tweeks
 vmap ( S)
