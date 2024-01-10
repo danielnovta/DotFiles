@@ -22,3 +22,12 @@ view and format json file
 
 ### ripgrep
 better grep
+
+### mmv
+Rename multiple files using your $EDITOR. The command name is named after multi-mv.
+
+
+### mmv
+Rename multiple files using your $EDITOR. The command name is named after multi-mv.
+
+
